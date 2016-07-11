@@ -9,3 +9,4 @@ dependencies:
     - sudo cp ~/circleci-php-application/mysite.conf /etc/apache2/sites-available
     - sudo a2ensite mysite.conf
     - sudo service apache2 restart
+    - sudo echo 127.0.0.1 >> /etc/hosts
