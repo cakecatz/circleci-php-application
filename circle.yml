@@ -1,0 +1,10 @@
+machine:
+  php:
+    version: 7.0.4
+dependencies:
+  # pre:
+  #   - cp config/custom.ini /opt/circleci/php/$(phpenv global)/etc/conf.d/
+  post:
+    - sudo cp ~/circleci-php-application/mysite.conf /etc/apache2/sites-available
+    - sudo a2ensite mysite.conf
+    - sudo service apache2 restart
