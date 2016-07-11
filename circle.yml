@@ -5,6 +5,7 @@ dependencies:
   # pre:
   #   - cp config/custom.ini /opt/circleci/php/$(phpenv global)/etc/conf.d/
   post:
+    - sudo a2dismod php5
     - sudo cp ~/circleci-php-application/mysite.conf /etc/apache2/sites-available
     - sudo a2ensite mysite.conf
     - sudo service apache2 restart
