@@ -1,12 +1,21 @@
+general:
+  artifacts:
+    - 'form.gif'
+
 machine:
   php:
     version: 7.0.4
 dependencies:
-  # pre:
+  pre:
+    - npm install nightmare nightmare-animated-gif
   #   - cp config/custom.ini /opt/circleci/php/$(phpenv global)/etc/conf.d/
   post:
     - sudo a2dismod php5
     - sudo cp ~/circleci-php-application/mysite.conf /etc/apache2/sites-available
     - sudo a2ensite mysite.conf
     - sudo service apache2 restart
-    - sudo echo 127.0.0.1 >> /etc/hosts
+    - sudo echo '127.0.0.1 www.mysite.com' | sudo tee --append /etc/hosts > /dev/null
+
+test:
+  override:
+    - node capture.js
