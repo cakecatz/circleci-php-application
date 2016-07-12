@@ -3,7 +3,7 @@ var animatedGif = require('nightmare-animated-gif');
 var nightmare = Nightmare();
 
 nightmare
-  .goto('http://www.mysite.com')
+  .goto('http://www.mysite.com:8080')
   .use(animatedGif.captureAs('form'))
   .type('[name=message]', 'Hello, World')
   .use(animatedGif.captureAs('form'))
